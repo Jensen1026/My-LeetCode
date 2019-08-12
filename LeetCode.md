@@ -43,7 +43,7 @@
    * 初始化 init
    * 方程 function
    * 结果 result
-4. 常见类型
+4. **常见类型**
    * 矩阵DP
    * 序列DP
    * 双序列 DP
