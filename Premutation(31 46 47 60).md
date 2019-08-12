@@ -116,15 +116,6 @@
         generatePermution(nums, used, 0, len, new Stack<>(), res);
         return res;
     }
-
-    public static void main(String[] args) {
-        int[] nums = new int[]{1, 2, 3, 4};
-        Solution solution = new Solution();
-        List<List<Integer>> permute = solution.permute(nums);
-        for (int i = 0; i < permute.size(); i++) {
-            System.out.println(permute.get(i));
-        }
-    }
     ```
 
     **代码二：深度优先遍历**
@@ -269,12 +260,41 @@
         findPermuteUnique(nums, 0, new Stack<>());
         return res;
     }
+   ```
 
-    public static void main(String[] args) {
-        int[] nums = {1, 1, 2};
-        Solution solution = new Solution();
-        List<List<Integer>> permuteUnique = solution.permuteUnique(nums);
-        System.out.println(permuteUnique);
+4. 深度优先遍历
+   >对于上述代码二：如果要去重复，若满足约束条件。对于一段重复的数字，当我们要将其中某个数字放入排列中时，要确保在它前面的和它一样的数字都已经进入到排列中了，这样就可以保证重复数字是按照它们的索引大小顺序进入排列的，去掉了重复的排列。也就是说，在按照索引的顺序从左到右开始判断时，对于一段重复的数字，每个位置要确保它前面的一个数字已经进入了排列。
+
+   ```
+    int n;
+
+    void qpl(int d, bool* f, vector<int>& nums, vector<int>& t, vector<vector<int>>& ans)
+    {
+        if(d >= n)
+        {
+            ans.push_back(t);
+            return;
+        }
+        for(int i=0;i<n;i++)
+        {
+            if(f[i] == 1) continue;
+            if(i>0 && nums[i]==nums[i-1] && f[i-1] == 0) continue;  //确保按照索引的大小顺序排列
+            t[d] = nums[i];
+            f[i] = 1;
+            qpl(d+1,f,nums,t,ans);
+            f[i] = 0;
+        }
+    }
+
+    vector<vector<int>> permuteUnique(vector<int>& nums) {
+        sort(nums.begin(),nums.end());
+        n = nums.size();
+        vector<vector<int>> ans;
+        vector<int> t(n);
+        bool f[n];
+        memset(f,0,sizeof(f));
+        qpl(0,f,nums,t,ans);
+        return ans;
     }
    ```
 
