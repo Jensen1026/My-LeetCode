@@ -85,7 +85,9 @@
     **代码一**
     ```
     //curSize表示当前的路径path里面有多少个元素
-    private void generatePermution(int[] nums, boolean[] visited, int curSize, int len, Stack<Integer> path, List<List<Integer>> res) {
+    private void generatePermution(int[] nums, boolean[] visited, 
+        int curSize, int len, Stack<Integer> path, List<List<Integer>> res) {
+        
         if (curSize == len) {
             // 此时 path 已经保存了 nums 中的所有数字，已经成为了一个排列
             res.add(new ArrayList<>(path));
