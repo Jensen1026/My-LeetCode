@@ -50,12 +50,12 @@
     ```
     public void backtrack(int n,ArrayList<Integer> nums,List<List<Integer>> output,int first) {
         if (first == n)
-        output.add(new ArrayList<Integer>(nums));
+            output.add(new ArrayList<Integer>(nums));
         for (int i = first; i < n; i++) {
-        Collections.swap(nums, first, i);
-        backtrack(n, nums, output, first + 1);
-        //递归函数结束时数组会恢复到原来最开始的状态
-        Collections.swap(nums, first, i);
+            Collections.swap(nums, first, i);
+            backtrack(n, nums, output, first + 1);
+            //递归函数结束时数组会恢复到原来最开始的状态
+            Collections.swap(nums, first, i);
         }
     }
 
