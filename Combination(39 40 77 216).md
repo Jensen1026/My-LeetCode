@@ -15,7 +15,7 @@
 
 1. **方法一**：
 
-    ```
+```
         public void getCombine(List<List<Integer>> ans,LinkedList<Integer> path,int n,int k,int cur){
             if(cur==n+1)//隐含着path相应临界条件，递归出口
                 return;
@@ -32,7 +32,7 @@
             getCombine(ans,new LinkedList<Integer>(),n,k,1);
             return ans;
         }
-    ```
+```
 
 2. **方法二**：回溯法
 
@@ -48,7 +48,7 @@
 
 >**代码一**
 
-    ```
+```
         public void backtrack(int first,LinkedList<Integer> curr,int k,int n){
             if(curr.size()==k)
                 output.add(new LinkedList(curr));
@@ -63,7 +63,7 @@
             backtrack(1,new LinkedList<Integer>(),k,n);
             return output;
         }
-    ```
+```
 
 >**代码二**：代码一的优化，剪枝
 
@@ -134,7 +134,8 @@
 **代码一**：简单回溯，思路比较好理解。参数比较复杂，实际上total这个参数可以去掉。
 
 ```
-    public void getCombine(List<List<Integer>> ans,int total,LinkedList<Integer> path,int []nums,int target,int begin){
+    public void getCombine(List<List<Integer>> ans,int total,
+        LinkedList<Integer> path,int []nums,int target,int begin){
         if(total>target)
             return;
         if(total==target){
@@ -161,7 +162,8 @@
 >对于该题来讲，数组无需排序，因为该数组不含重复数字。
 
 ```
-    public void getCombine(List<List<Integer>> ans,LinkedList<Integer> path,int []nums,int target,int begin){
+    public void getCombine(List<List<Integer>> ans,
+        LinkedList<Integer> path,int []nums,int target,int begin){
         if(target<0)
             return;
         if(target==0){
@@ -184,7 +186,8 @@
 1. **方法二**：回溯法(排序去重)
 
 ```
-    public void getCombine(List<List<Integer>> ans,LinkedList<Integer> path,int []nums,int target,int begin){
+    public void getCombine(List<List<Integer>> ans,
+        LinkedList<Integer> path,int []nums,int target,int begin){
         if(target==0){
             ans.add(new LinkedList(path));
             return;
